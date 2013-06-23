@@ -1,7 +1,6 @@
 class PaymentsController < ApplicationController
 
 	def success
-		raise params.inspect
   end
 
   def cancel
