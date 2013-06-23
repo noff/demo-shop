@@ -1,0 +1,44 @@
+
+<% content_for :sidebar do %>
+	<% if signed_in? %>
+		<%= link_to 'Edit', edit_item_path(@item), :class => 'btn' %>
+	<% end %>
+<% end %>
+
+
+<h1><%= @item.name %></h1>
+
+<% if signed_in? %>
+	<div><%= render 'item_users/form' %></div>
+<% end %>
+
+<%= link_to image_tag(@item.photo(:medium), :class => 'item-photo'), @item.photo.url %>
+
+<p><%= @item.description %></p>
+
+<p>Цена: <%= @item.price %> руб.</p>
+
+<% unless @item.category.nil? %>
+	<p>Категория: <%= link_to @item.category.name, @item.category %></p>
+<% end %>
+
+<h2>Обсуждение</h2>
+
+<% if signed_in? %>
+	<%= render 'comments/form' %>
+<% end %>
+
+<% @item.comments.order('created_at DESC').each do |comment| %>
+	<div class="comment">
+		<div><%= comment.user.name %>  <%= time_ago_in_words comment.created_at %> ago</div>
+		<div><%= simple_format comment.message %></div>
+
+		<% if signed_in? %>
+			<% if current_user.id == comment.user_id %>
+				<%= link_to 'Удалить комментарий', comment, :method => :delete %>
+			<% end %>
+		<% end %>
+
+	</div>
+<% end %>
+

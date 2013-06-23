@@ -1,0 +1,38 @@
+<h1>Мои заказы</h1>
+
+<% if @orders.any? %>
+
+	<% @orders.each do |order| %>
+
+		<h3>Заказ #<%= order.id %></h3>
+
+		<% unless order.paid? %>
+			<%= link_to 'Отменить заказ', order, :method => :delete, :class => 'btn' %>
+		<% end %>
+
+		<div>
+			<div><strong>Адрес доставки</strong></div>
+			<%= simple_format order.address %>
+		</div>
+
+		<p>Общая стоимость: <%= order.sum %></p>
+
+		<h4>Товары в заказе</h4>
+
+		<table class="table">
+			<% order.item_orders.each do |item_order| %>
+				<tr>
+					<td>
+						<%=link_to item_order.item.name, item_order.item %>
+					</td>
+					<td><%= item_order.price %> рублей</td>
+					<td><%= item_order.quantity %> шт.</td>
+				</tr>
+			<% end %>
+		</table>
+
+	<% end %>
+
+<% else %>
+	<p>Вы не оформили еще ни одного заказа</p>
+<%	end %>

@@ -1,0 +1,30 @@
+<h1>Моя корзина</h1>
+
+<% if @item_users.count > 0 %>
+	<table class="table">
+		<tr>
+			<th>Наименование</th>
+			<th>Количество</th>
+			<th>Цена за штуку</th>
+			<th>Общая цена</th>
+			<th></th>
+		</tr>
+		<% @item_users.each do |item_user| %>
+			<tr>
+				<td><%= item_user.item.name %></td>
+				<td><%= item_user.quantity %></td>
+				<td><%= item_user.item.price %> руб.</td>
+				<td><%= item_user.item.price * item_user.quantity %> руб.</td>
+				<td><%= link_to raw('&times;'), item_user, :method => :delete %> </td>
+			</tr>
+		<% end %>
+	</table>
+
+	<p>Полная стоимость: <%= ItemUser.total_sum_for current_user %> рублей.</p>
+
+	<h4>Оформить заказ</h4>
+	<%= render 'orders/form' %>
+
+<% else %>
+	<p>В корзине еще ничего нет. Сходите, <%= link_to 'купите чего-нибудь', categories_path %>.</p>
+<% end %>

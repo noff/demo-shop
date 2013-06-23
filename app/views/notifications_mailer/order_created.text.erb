@@ -1,0 +1,17 @@
+Здравствуйте, <%= @order.user.name %>.
+
+Спасибо за ваш заказ.
+Его стоимость составляет: <%= @order.sum %> рублей.
+
+Адрес доставки:
+<%= @order.address %>
+
+Содержимое заказа:
+<% @order.item_orders.each do |item_order| %>
+	- <%= item_order.item.name %> x<%= item_order.quantity%> шт.
+<% end %>
+
+Теперь вам осталось его оплатить.
+Ждем бабло.
+Спасибо.
+

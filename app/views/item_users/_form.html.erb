@@ -1,0 +1,5 @@
+<%= simple_form_for(@item_user) do |f| %>
+  <%= f.error_notification %>
+    <%= f.input :item_id, :as => :hidden %>
+    <%= f.submit 'Добавить в корзину' %>
+<% end %>

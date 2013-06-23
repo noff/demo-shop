@@ -1,0 +1,30 @@
+<% content_for :sidebar do %>
+
+	<% if signed_in? %>
+		<%= link_to "Создать категорию", new_category_path, :class => 'btn' %>
+	<% end %>
+
+<% end %>
+
+<h1>Каталог товаров</h1>
+
+<div class="categories">
+	<% @categories.each do |category| %>
+
+		<% if category.items.exists? %>
+
+			<div class="element">
+				<% if category.name.blank? %>
+					<%= link_to 'no name', category %>
+				<% else %>
+					<%= link_to category.name, category %>
+				<% end %>
+				(<%= category.items.count %>)
+			</div>
+
+		<% end %>
+
+	<% end %>
+</div>
+
+

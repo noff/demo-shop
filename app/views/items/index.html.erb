@@ -1,0 +1,18 @@
+<h1>Listing items</h1>
+
+<table class="table">
+<% @items.each do |item| %>
+  <tr>
+    <td><%= item.name %></td>
+  </tr>
+<% end %>
+</table>
+
+<% content_for :sidebar do %>
+	<% if signed_in? %>
+		<%= link_to 'New Item', new_item_path, :class => 'btn' %>
+	<% end %>
+<% end %>
+
+
+
