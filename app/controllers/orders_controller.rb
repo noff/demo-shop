@@ -45,6 +45,7 @@ class OrdersController < ApplicationController
 				# Чистим корзину
 				item_users.destroy_all
 
+				
 				# Пишем юзеру письмо
 				NotificationsMailer.order_created order
 
