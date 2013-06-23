@@ -6,4 +6,9 @@ class Order < ActiveRecord::Base
 	include ActiveModel::Validations
 	validates_with UserValidator
 
+	# Отметить заказ как оплаченный
+	def mark_as_paid
+		update_attribute :paid, true
+	end
+
 end

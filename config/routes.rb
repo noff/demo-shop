@@ -1,6 +1,8 @@
 Eshop::Application.routes.draw do
 
-
+  get "payments/success"
+  get "payments/cancel"
+  match "payments/notify"
 
   devise_for :users
 

@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
 
 				
 				# Пишем юзеру письмо
-				NotificationsMailer.order_created order
+				#NotificationsMailer.order_created order
 
 				redirect_to orders_path, notice: 'Order was successfully created.'
 			else
