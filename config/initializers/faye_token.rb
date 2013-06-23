@@ -1,0 +1,1 @@
+FAYE_TOKEN = "!@#ert^&sdad14*iop_+"

@@ -1,5 +1,7 @@
 Eshop::Application.routes.draw do
 
+	post 'chat/post'
+
   get "payments/success"
   get "payments/cancel"
   match "payments/notify"

@@ -23,6 +23,8 @@ gem "paperclip", "~> 3.0"
 gem 'faraday'
 
 gem 'whenever', :require => false
+gem "faye", "~> 0.8.9"
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
