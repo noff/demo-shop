@@ -23,4 +23,8 @@ class ItemUser < ActiveRecord::Base
 	end
 
 
+	def self.clean_old_records
+		where('created_at < ?', 1.month.ago).destroy_all
+	end
+
 end
